@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_playstroe/screens/bottom_bar/provider/play_provider.dart';
 import 'package:provider/provider.dart';
@@ -12,14 +13,13 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-
   PlayPro? proTrue;
   PlayPro? proFalse;
 
   @override
   Widget build(BuildContext context) {
-    proTrue = Provider.of<PlayPro>(context,listen: true);
-    proFalse = Provider.of<PlayPro>(context,listen: false);
+    proTrue = Provider.of<PlayPro>(context, listen: true);
+    proFalse = Provider.of<PlayPro>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -32,20 +32,16 @@ class _BottomBarState extends State<BottomBar> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.games_rounded),
+              icon: Icon(proTrue!.game == false
+                  ? CupertinoIcons.game_controller
+                  : CupertinoIcons.game_controller_solid),
               label: "Games",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.apps),
+              icon: Icon(proTrue!.app == false
+                  ? CupertinoIcons.square_grid_2x2
+                  : CupertinoIcons.square_grid_2x2_fill),
               label: "Apps",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.movie),
-              label: "Movies & TV",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.book),
-              label: "Books",
             ),
           ],
         ),

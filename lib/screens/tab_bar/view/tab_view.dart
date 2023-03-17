@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_playstroe/screens/for_you/view/foryou_view.dart';
+import 'package:provider/provider.dart';
+
+import '../../bottom_bar/provider/play_provider.dart';
 
 class TabBarV extends StatefulWidget {
   const TabBarV({Key? key}) : super(key: key);
@@ -8,8 +12,16 @@ class TabBarV extends StatefulWidget {
 }
 
 class _TabBarVState extends State<TabBarV> {
+
+  List screens = [forYou()];
+
+  PlayPro? proTrue;
+  PlayPro? proFalse;
+
   @override
   Widget build(BuildContext context) {
+    proTrue = Provider.of<PlayPro>(context, listen: true);
+    proFalse = Provider.of<PlayPro>(context, listen: false);
     return SafeArea(
       child: DefaultTabController(
         length: 4,
@@ -58,6 +70,7 @@ class _TabBarVState extends State<TabBarV> {
                 ),
               ),
               TabBar(
+                onTap: (value) => proFalse!.ind = value,
                 indicatorColor: Colors.green,
                 indicatorSize: TabBarIndicatorSize.label,
                 tabs: [
@@ -73,20 +86,10 @@ class _TabBarVState extends State<TabBarV> {
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
-                  Tab(
-                    child: Text(
-                      "Categories",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                  Tab(
-                    child: Text(
-                      "Editor's choice",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
                 ],
               ),
+              Divider(),
+              Expanded(child: screens[proTrue!.ind]),
             ],
           ),
         ),
