@@ -76,7 +76,7 @@ class ForYouPro extends ChangeNotifier {
     "assets/images/COCLogo.png",
   ];
   List name2 = [
-    "MineCraft",
+    "Free Fire",
     "BGMI",
     "Call of Duty",
     "Clash of Clans",

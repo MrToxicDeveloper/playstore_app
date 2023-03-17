@@ -7,10 +7,15 @@ class PlayPro extends ChangeNotifier{
   bool game = true;
   bool app = false;
 
-  void change(int value){
+  void changeBottom(int value){
     i = value;
     game = !game;
     app = !app;
+    notifyListeners();
+  }
+  void changeTab(int value){
+    ind = value;
      notifyListeners();
   }
+
 }

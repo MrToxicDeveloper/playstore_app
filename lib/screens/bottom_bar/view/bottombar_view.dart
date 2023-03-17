@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_playstroe/screens/bottom_bar/provider/play_provider.dart';
+import 'package:google_playstroe/screens/tab_bar/view/tab_view_apps.dart';
 import 'package:provider/provider.dart';
 
 import '../../tab_bar/view/tab_view.dart';
@@ -16,6 +17,8 @@ class _BottomBarState extends State<BottomBar> {
   PlayPro? proTrue;
   PlayPro? proFalse;
 
+  List screens = [TabBarV(), TabBarApps()];
+
   @override
   Widget build(BuildContext context) {
     proTrue = Provider.of<PlayPro>(context, listen: true);
@@ -28,7 +31,7 @@ class _BottomBarState extends State<BottomBar> {
           unselectedItemColor: Colors.grey,
           showUnselectedLabels: true,
           onTap: (value) {
-            proFalse!.change(value);
+            proFalse!.changeBottom(value);
           },
           items: [
             BottomNavigationBarItem(
@@ -45,7 +48,7 @@ class _BottomBarState extends State<BottomBar> {
             ),
           ],
         ),
-        body: TabBarV(),
+        body: screens[proTrue!.i],
       ),
     );
   }

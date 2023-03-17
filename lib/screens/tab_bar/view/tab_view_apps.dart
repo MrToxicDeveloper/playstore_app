@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:google_playstroe/screens/for_you/view/foryou_apps.dart';
 import 'package:google_playstroe/screens/for_you/view/foryou_view.dart';
+import 'package:google_playstroe/screens/top_charts/view/top_chart_apps.dart';
 import 'package:google_playstroe/screens/top_charts/view/top_chart_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../bottom_bar/provider/play_provider.dart';
 
-class TabBarV extends StatefulWidget {
-  const TabBarV({Key? key}) : super(key: key);
+class TabBarApps extends StatefulWidget {
+  const TabBarApps({Key? key}) : super(key: key);
 
   @override
-  State<TabBarV> createState() => _TabBarVState();
+  State<TabBarApps> createState() => _TabBarAppsState();
 }
 
-class _TabBarVState extends State<TabBarV> {
+class _TabBarAppsState extends State<TabBarApps> {
 
-  List screens = [forYou(),TopChart()];
+  List screens = [forYouApps(),TopChartApps()];
 
   PlayPro? proTrue;
   PlayPro? proFalse;
